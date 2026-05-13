@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MethodMentor!</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+<h1>MethodMentor</h1>
+
+<div id="section-intro">
+  <h2>Welcome to Level 1</h2>
+  <p>This is your introduction text. Read this first.</p>
+  <button id="start-quiz-btn">Start Quiz</button>
+</div>
+
+<div id="section-quiz" style="display:none;">
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <div id="question-container"></div>
+  <p id="feedback"></p>
+
+  <button id="submit-btn">Submit</button>
+  <button id="next-btn" style="display:none;">Next</button>
+</div>
+
+<div id="section-unlocked" style="display:none;">
+  <h2>🎉 You unlocked the next lesson!</h2>
+  <p>This is the new HTML text that appears after mastery.</p>
+</div>
+
+<script type="module">
+  window.addEventListener("DOMContentLoaded", async () => {
+    const { startTutor } = await import("./controller.js");
+    startTutor();
+  });
+</script>
+
+</body>
+</html>

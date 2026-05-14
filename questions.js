@@ -432,3 +432,209 @@ maxAttempts: 3,
 }
 
 ];
+
+
+export const questions1 = [
+  {
+  question_id: 421,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.2,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Write code that multiplies every number in the list by two.",
+  context: `
+const nums = [2, 4, 6, 8]
+  `,
+
+  answer: `
+const doubled = nums.map(n => n * 2)
+  `.trim(),
+
+  explanation: "Using .map lets you apply the same transformation to each number cleanly."
+},
+{
+  question_id: 422,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.1,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Return a new list where each string is converted to uppercase.",
+  context: `
+const words = ["apple", "banana", "kiwi"]
+  `,
+
+  answer: `
+const upper = words.map(w => w.toUpperCase())
+  `.trim(),
+
+  explanation: "Strings have a built‑in .toUpperCase() method, and .map applies it to each item."
+},
+{
+  question_id: 423,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 1.6,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Write code that filters out numbers less than 10.",
+  context: `
+const values = [3, 12, 7, 25, 10]
+  `,
+
+  answer: `
+const filtered = values.filter(v => v >= 10)
+  `.trim(),
+
+  explanation: "The .filter method keeps only items that satisfy the given condition."
+},
+
+{
+  question_id: 424,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 1.7,
+  guess: 0.15,
+  maxAttempts: 3,
+
+  prompt: "Return a list of the lengths of each string. Store it in a variable called lengths.",
+  context: `
+const pets = ["cat", "parrot", "hamster"]
+  `,
+
+  answer: `
+const lengths = pets.map(p => p.length)
+  `.trim(),
+
+  explanation: "Each string has a .length property, and .map collects those values into a new list called "
+},
+
+{
+  question_id: 426,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.2,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Create a new list called doubled that contains each number multiplied by 2.",
+  context: `
+const nums = [3, 7, 11]
+  `,
+
+  answer: `
+const doubled = nums.map(n => n * 2)
+  `.trim(),
+
+  explanation: "Using .map applies the same transformation to each number and returns a new list."
+},
+{
+  question_id: 427,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.1,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Make a new list called upperWords where each string is uppercase.",
+  context: `
+const words = ["sun", "cloud", "rain"]
+  `,
+
+  answer: `
+const upperWords = words.map(w => w.toUpperCase())
+  `.trim(),
+
+  explanation: "Strings have a .toUpperCase() method, and .map applies it to each element."
+},
+{
+  question_id: 428,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.3,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Create a new list called lengths that stores the length of each string.",
+  context: `
+const pets = ["dog", "turtle", "fish"]
+  `,
+
+  answer: `
+const lengths = pets.map(p => p.length)
+  `.trim(),
+
+  explanation: "Each string has a .length property, and .map collects those values."
+},
+{
+  question_id: 429,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 1.6,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Make a new list called bigNumbers that contains only numbers greater than 50.",
+  context: `
+const values = [12, 99, 51, 3, 77]
+  `,
+
+  answer: `
+const bigNumbers = values.filter(v => v > 50)
+  `.trim(),
+
+  explanation: "The .filter method keeps only the items that satisfy the condition."
+},
+{
+  question_id: 430,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 1.7,
+  guess: 0.15,
+  maxAttempts: 3,
+
+  prompt: "Create a new list called initials that stores the first letter of each name.",
+  context: `
+const names = ["Sophie", "Liam", "Ava", "Noah"]
+  `,
+
+  answer: `
+const initials = names.map(n => n[0])
+  `.trim(),
+
+  explanation: "Indexing with [0] extracts the first character of each string."
+}
+
+
+
+]
+
+
+export function getQuestionSet(mode, mastery) {
+
+  // MAP LESSON
+  if (mode === "map") {
+
+    if (mastery < 85) {
+      return questions;
+    }
+
+    return questions1;
+  }
+
+  // FILTER LESSON
+  if (mode === "filter") {
+
+    if (mastery < 85) {
+      return questions2;
+    }
+
+    return questions3;
+  }
+
+  return [];
+}

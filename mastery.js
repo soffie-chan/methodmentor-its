@@ -1,12 +1,14 @@
 // ------------------------------
 // IRT: Update Theta
 // ------------------------------
+
 export let difficulty2Correct = 0;
 
 export function __setTheta(value) {
   theta = value;
 }
 //restore internal state.
+
 
 export function updateTheta(theta, question, isCorrect, k = 0.2) {
   const a = question.discrimination;
@@ -32,6 +34,9 @@ let theta = 0;
 
 export function getTheta() {
   return theta;
+}
+export function __setDifficulty2Correct(value) {
+  difficulty2Correct = value;
 }
 
 // ------------------------------
@@ -129,6 +134,8 @@ export function renderQuestion(q) {
     );
 
   if (!container) return;
+    const type = q.type || "syntax"; // fallback
+
 
   // Syntax fill-in-the-blank
 if (q.type === "syntax") {

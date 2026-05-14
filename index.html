@@ -9,19 +9,17 @@
 
 <h1>MethodMentor</h1>
 
-<div id="section-intro">
+<div id="section-select">
+  <h2>Choose a Topic</h2>
+
+  <button id="select-map">Map</button>
+  <button id="select-filter">Filter</button>
+</div>
+
+<div id="section-intro" style="display:none;">
     <h2>Welcome to Map!</h2>
 
-  <div id="textbookmap">
-    <p>.map() lets you transform every item in an array and return a new array. Think of it as “take each value, change it, and keep the structure.”</p>
-    <p>To use map, you need a list of items that you would like to change. Then, think of what command you want to apply to it.</p>
-    <p>If you wanted to double every number in a list called "Nums", for example,</p>
-    <p style="font-size: 20px; color: blueviolet;">const newList = Nums.map((x:number):number => x*2)</p>
-    <p>Here, <u>const newList</u> is the list you want to store everything in. <u>x</u> is the parameter and x:number means that the type of x is a number. We mention this because the list Nums is filled with numbers, and since we're iterating through it, our input values are numbers!</p>
-    <p>(x:number):number is basically saying that the output we expect should also be a number. The => operator says, "Everything after me is a part of the function." So it's like {} as you know it.</p>
-    <p>Lastly, the command! Since we want to multiply every number, we use x*2.</p>
-    <p>Why not try it yourself?</p>
-  </div>
+  
   <br>
 
   <button id="start-quiz-btn">Start Quiz</button>
@@ -34,7 +32,6 @@
   <br>
   <div id="question-container"></div>
   <br>
-
 
   <button id="submit-btn">Submit</button>
   <button id="next-btn" style="display:none;">Next</button>

@@ -7,15 +7,14 @@ export const questions = [
     question_id: 401,
     type: "syntax",
     difficulty: -2,
-
     discrimination: 0.8,
     guess: 0.35,
-
     prompt: "Fill in the blank to uppercase each string.",
-
     context: `
 const fruits = ["apple", "pear", "kiwi"]
     `,
+    hint: ".map traverses through an existing list. Where are we getting our data from?",
+maxAttempts: 3,
 
     template: `
 const uppercased =
@@ -44,6 +43,9 @@ const nums = [2, 4, 6]
 const squared =
   ___.map((n: number): number => n * n)
     `,
+        hint: ".map traverses through an existing list. Where are we getting our data from?",
+maxAttempts: 3,
+
 
     answer: "nums",
     explanation: "The array name goes before .map()."
@@ -58,6 +60,9 @@ const squared =
     guess: 0.35,
 
     prompt: "Fill in the blank to get the length of each string.",
+
+        hint: ".map traverses through an existing list. Where are we getting our data from?",
+maxAttempts: 3,
 
     context: `
 const words = ["hi", "hello", "hey"]
@@ -82,6 +87,9 @@ const lengths =
   context: `
 const scores = [5, 12, 20]
   `,
+      hint: ".map traverses through an existing list. Where are we getting our data from?",
+maxAttempts: 3,
+
   template: `
 const boosted =
   ___.map((s: number): number => s + 10)
@@ -100,6 +108,9 @@ const boosted =
   context: `
 const names = ["sam", "lee", "kai"]
   `,
+      hint: ".map traverses through an existing list. Where are we getting our data from?",
+maxAttempts: 3,
+
   template: `
 const reversed =
   ___.map((n: string): string => n.split("").reverse().join(""))
@@ -118,6 +129,9 @@ const reversed =
   context: `
 const nums = [1, 2, 3]
   `,
+      hint: "What will be the type of the items in our outcome list?",
+maxAttempts: 3,
+
   template: `
 const doubled =
   nums.map((x: ___): number => x * 2)
@@ -131,6 +145,9 @@ const doubled =
   difficulty: -1,
       discrimination: 1.0,
     guess: 0.30,
+          hint: "What will be the type of the items in our outcome list?",
+maxAttempts: 3,
+
 
   prompt: "Fill in the missing type for the iterator variable.",
   context: `
@@ -148,6 +165,9 @@ const excited =
   type: "syntax",
   difficulty: -1,
   discrimination: 1.0,
+        hint: "What will be the type of the items in our outcome list?",
+maxAttempts: 3,
+
     guess: 0.30,
   prompt: "Fill in the missing type for the iterator variable.",
   context: `
@@ -165,6 +185,9 @@ const celsius =
   type: "syntax",
   difficulty: -1,
   discrimination: 1.0,
+        hint: "What will be the type of the items in our outcome list?",
+maxAttempts: 3,
+
     guess: 0.30,
   prompt: "Fill in the missing type for the iterator variable.",
   context: `
@@ -182,6 +205,9 @@ const lengths =
   type: "syntax",
   difficulty: -1,
   discrimination: 1.0,
+        hint: "What will be the type of the items in our outcome list?",
+maxAttempts: 3,
+
     guess: 0.30,
   prompt: "Fill in the missing type for the iterator variable.",
   context: `
@@ -198,6 +224,9 @@ const halved =
   question_id: 411,
   type: "syntax",
   difficulty: 1,
+        hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   discrimination: 1.5,
     guess: 0.20,
   prompt: "Fill in the expression to uppercase each string.",
@@ -216,6 +245,9 @@ const loud =
   type: "syntax",
   difficulty: 1,
   discrimination: 1.5,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
     guess: 0.20,
   prompt: "Fill in the expression to get the first letter.",
   context: `
@@ -238,6 +270,9 @@ const initials =
   context: `
 const nums = [2, 3, 4]
   `,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   template: `
 const cubed =
   nums.map((x: number): number => ___)
@@ -251,6 +286,9 @@ const cubed =
   difficulty: 1,
   discrimination: 1.5,
     guess: 0.20,
+            hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   prompt: "Fill in the expression to append '?' to each string.",
   context: `
 const words = ["why", "how", "what"]
@@ -267,6 +305,9 @@ const questioned =
   type: "syntax",
   difficulty: 1,
   discrimination: 1.5,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
     guess: 0.20,
   prompt: "Fill in the expression to convert each number to a string.",
   context: `
@@ -276,6 +317,9 @@ const nums = [1, 2, 3]
 const strings =
   nums.map((n: number): string => ___)
   `,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   answer: "String(n)",
   explanation: "The right-hand side of the arrow is missing."
 },
@@ -286,6 +330,9 @@ const strings =
   discrimination: 1.8,
     guess: 0.15,
   prompt: "Fill in the transformation to return the last letter of each string.",
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   context: `
 const fruits = ["apple", "pear", "plum"]
   `,
@@ -307,6 +354,9 @@ const lastLetters =
   context: `
 const nums = [9, 16, 25]
   `,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   template: `
 const roots =
   nums.map((n: number): number => ___)
@@ -319,6 +369,9 @@ const roots =
   type: "syntax",
   difficulty: 2,
     discrimination: 1.8,
+            hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
     guess: 0.15,
 
   prompt: "Fill in the transformation to reverse each string.",
@@ -337,6 +390,9 @@ const reversed =
   type: "syntax",
   difficulty: 2,
     discrimination: 1.8,
+            hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
     guess: 0.15,
 
   prompt: "Fill in the transformation to return the number of vowels in each string.",
@@ -355,6 +411,9 @@ const vowelCounts =
   type: "syntax",
   difficulty: 2,
     discrimination: 1.8,
+            hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
     guess: 0.15,
 
   prompt: "Fill in the transformation to return the number doubled and then minus 3.",
@@ -365,6 +424,9 @@ const nums = [5, 10, 15]
 const transformed =
   nums.map((n: number): number => ___)
   `,
+          hint: "What does the prompt want us to do with each item?",
+maxAttempts: 3,
+
   answer: "(n * 2) - 3",
   explanation: "A multi‑step numeric transformation."
 }

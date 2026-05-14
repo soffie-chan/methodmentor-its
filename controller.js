@@ -7,80 +7,68 @@ import {
 export function startTutor() {
   const intro = document.getElementById("section-intro");
   const quiz = document.getElementById("section-quiz");
-  const unlocked = document.getElementById("section-unlocked");
 
   const startQuizBtn = document.getElementById("start-quiz-btn");
   const submitBtn = document.getElementById("submit-btn");
   const nextBtn = document.getElementById("next-btn");
   const feedback = document.getElementById("feedback");
 
-
   let currentQuestion = null;
+  let attemptCount = 0;
 
-  // ------------------------------
-  // Start quiz
-  // ------------------------------
+  function loadNextQuestion() {
+    currentQuestion = pickNextQuestion(getTheta(), questions);
+
+    renderQuestion(currentQuestion);
+
+    attemptCount = 0;
+
+    submitBtn.style.display = "inline-block";
+    nextBtn.style.display = "none";
+    feedback.textContent = "Coo!";
+  }
+
   startQuizBtn.onclick = () => {
-        loadNextQuestion();
-
     intro.style.display = "none";
     quiz.style.display = "block";
-      updateProgressBar(thetaToMastery(getTheta())); 
-  };
 
-  // ------------------------------
-  // Load next adaptive question
-  // ------------------------------
- function loadNextQuestion() {
-
-  currentQuestion =
-    pickNextQuestion(getTheta(), questions);
-
-  renderQuestion(currentQuestion);
-
-  const mastery =
-    thetaToMastery(getTheta());
-
-  updateProgressBar(mastery);
-
-  feedback.textContent = "Coo.";
-  nextBtn.style.display = "none";
-  submitBtn.style.display = "inline-block";
-}
-nextBtn.onclick = () => {
     loadNextQuestion();
+    updateProgressBar(thetaToMastery(getTheta()));
   };
 
-
-
-  // ------------------------------
-  // Submit coding answer
-  // ------------------------------
 submitBtn.onclick = () => {
-  const input =
-    document.getElementById("code-input") ||
-    document.getElementById("blank-input");
+  if (!currentQuestion) return;
 
-  if (!input || !input.value.trim()) return;
+  submitAnswer(currentQuestion);
+
+  const input =
+    document.getElementById("blank-input") ||
+    document.getElementById("code-input");
+
+  if (!input) return;
 
   const userAnswer = input.value.trim();
+  const normalize = s => s.replace(/\s+/g, "").toLowerCase();
+  const isCorrect = normalize(userAnswer) === normalize(currentQuestion.answer);
 
-  const normalize = str =>
-    str.replace(/\s+/g, "").toLowerCase();
+  if (isCorrect) {
+    submitBtn.style.display = "none";
+    nextBtn.style.display = "inline-block";
+    return;
+  }
 
-  const isCorrect =
-    normalize(userAnswer) ===
-    normalize(currentQuestion.answer);
+  attemptCount++;
 
-  processAnswer(currentQuestion, isCorrect);
+  feedback.textContent = currentQuestion.hint || "Try again.";
 
-  feedback.innerHTML = isCorrect
-    ? `Correct!<br>${currentQuestion.explanation}`
-    : `Incorrect.<br>${currentQuestion.explanation}`;
-
-  feedback.style.color = isCorrect ? "green" : "red";
-
+  if (attemptCount >= (currentQuestion.maxAttempts ?? 2)) {
+  feedback.innerHTML = "Oops!<br>" + (currentQuestion.explanation || "Coo.");
   nextBtn.style.display = "inline-block";
-  submitBtn.style.display = "none";
+}
+
 };
+
+  nextBtn.onclick = () => {
+    loadNextQuestion();
+  };
 }

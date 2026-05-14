@@ -128,13 +128,13 @@ if (q.type === "syntax") {
 
     <p>${q.prompt}</p>
 
-    <pre class="context">
+    <div class="context">
 ${q.context || ""}
-    </pre>
+    </div>
 
-    <pre class="template">
+    <div class="template">
 ${rendered}
-    </pre>
+    </div>
   `;
 }  // Coding questions
   else if (q.type === "coding") {
@@ -147,9 +147,9 @@ ${rendered}
         placeholder="Type your code here..."
       ></textarea>
 
-      <pre>
+      <div>
 ${q.starterCode || ""}
-      </pre>
+      </div>
     `;
   }
 }

@@ -17,9 +17,6 @@ const pablo = document.getElementById("pablo");
 
 if (pablo) {
   pablo.onclick = () => {
-
-    localStorage.removeItem("tutorProgress");
-
     location.reload();
   };
 }
@@ -38,7 +35,7 @@ localStorage.setItem("selectedMode", "filter");
 
 if (saved.theta !== undefined) {
   import("./mastery.js").then(mod => {
-    mod.__setTheta(saved.theta); 
+    mod.__setTheta(saved.theta);  //change this for
 mod.__setDifficulty2Correct(saved.difficulty2Correct || 0);
 
     updateProgressBar(thetaToMastery(getTheta()));
@@ -96,6 +93,9 @@ function loadNextQuestion() {
   const pool = getQuestionSet(selectedMode, mastery);
   console.log("POOL:", pool);
 console.log("QUESTION:", currentQuestion);
+  console.log("RAW theta:", getTheta());
+console.log("MASTERY:", mastery);
+
 
   if (!pool || pool.length === 0) {
     console.error("No questions in pool!", mastery);

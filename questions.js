@@ -1,3 +1,4 @@
+const missing = token => code => !code.includes(token);
 export const questions = [
 
   // -------------------------
@@ -470,6 +471,29 @@ const words = ["apple", "banana", "kiwi"]
   answer: `
 const upper = words.map(w => w.toUpperCase())
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("words"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("toUpperCase()"),
+    message: "But we need these in uppercase!"
+  },
+  
+],
 
   explanation: "Strings have a built‑in .toUpperCase() method, and .map applies it to each item."
 },
@@ -489,6 +513,29 @@ const values = [3, 12, 7, 25, 10]
   answer: `
 const filtered = values.filter(v => v >= 10)
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("values"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("<"),
+    message: "But we need the lower numbers!"
+  },
+  
+],
 
   explanation: "The .filter method keeps only items that satisfy the given condition."
 },
@@ -509,6 +556,29 @@ const pets = ["cat", "parrot", "hamster"]
   answer: `
 const lengths = pets.map(p => p.length)
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("pets"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("length"),
+    message: "How can I find the length of the words?"
+  },
+  
+],
 
   explanation: "Each string has a .length property, and .map collects those values into a new list called "
 },
@@ -548,6 +618,29 @@ const words = ["sun", "cloud", "rain"]
   answer: `
 const upperWords = words.map(w => w.toUpperCase())
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("words"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("toUpperCase()"),
+    message: "But we need these in uppercase!"
+  },
+  
+],
 
   explanation: "Strings have a .toUpperCase() method, and .map applies it to each element."
 },
@@ -567,6 +660,29 @@ const pets = ["dog", "turtle", "fish"]
   answer: `
 const lengths = pets.map(p => p.length)
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("pets"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("length"),
+    message: "How can I find the length?"
+  },
+  
+],
 
   explanation: "Each string has a .length property, and .map collects those values."
 },
@@ -586,6 +702,29 @@ const values = [12, 99, 51, 3, 77]
   answer: `
 const bigNumbers = values.filter(v => v > 50)
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("values"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing(">"),
+    message: "But we need the greater numbers!"
+  },
+  
+],
 
   explanation: "The .filter method keeps only the items that satisfy the condition."
 },
@@ -605,18 +744,504 @@ const names = ["Sophie", "Liam", "Ava", "Noah"]
   answer: `
 const initials = names.map(n => n[0])
   `.trim(),
+  feedbackChecks: [
+  {
+    test: missing("const"),
+    message: "You're missing 'const'!"
+  },
+
+  {
+    test: missing(".map"),
+    message: "Remember to use .map()!"
+  },
+  {
+    test: missing("names"),
+    message: "Remember to use the initial list!"
+  },
+  {
+    test: missing("=>"),
+    message: "Hey... where'd that arrow go?"
+  },{
+    test: missing("n[0]"),
+    message: "How do I find the first index again...?"
+  },
+  
+],
 
   explanation: "Indexing with [0] extracts the first character of each string."
 }
+]
 
+export const questions2 = [
+{
+  question_id: 436,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.2,
+  guess: 0.20,
+  maxAttempts: 3,
 
+  prompt: "Filter numbers greater than 10.",
+  context: `
+const nums = [3, 12, 7, 25]
+  `,
+  template: `
+const result = nums.filter(n => ___)
+  `,
+  answer: "n > 10",
+  hint: "What does the prompt need us to filter?",
+  explanation: "Filtering keeps only items that satisfy the condition."
+},
+{
+  question_id: 437,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.1,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Keep only strings with length 3.",
+  context: `
+const words = ["cat", "bird", "sun"]
+  `,
+  template: `
+const result = words.filter(w => w.length ___ 3)
+  `,
+  answer: "=== 3",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Use strict equality to match the exact length."
+},
+{
+  question_id: 438,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.3,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Filter even numbers.",
+  context: `
+const nums = [2, 5, 8, 11]
+  `,
+  template: `
+const evens = nums.filter(n => n % 2 ___ 0)
+  `,
+  answer: "===",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Even numbers have a remainder of 0 when divided by 2."
+},
+{
+  question_id: 439,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.2,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Keep only words starting with 'a'.",
+  context: `
+const items = ["apple", "pear", "ant", "berry"]
+  `,
+  template: `
+const result = items.filter(x => x[0] ___ "a")
+  `,
+    hint: "What does the prompt need us to filter?",
+
+  answer: "===",
+  explanation: "Index 0 gives the first character of each string."
+},
+{
+  question_id: 440,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.4,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Filter numbers less than 5.",
+  context: `
+const nums = [1, 9, 4, 12]
+  `,
+  template: `
+const small = nums.filter(n => ___)
+  `,
+  answer: "n < 5",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "A simple comparison filters out larger values."
+},
+{
+  question_id: 442,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.7,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Filter objects with age >= 18.",
+  context: `
+const people = [
+  { name: "Ava", age: 17 },
+  { name: "Leo", age: 22 }
+]
+  `,
+  template: `
+const adults = people.filter(p => p.age ___ 18)
+
+  `,
+  answer: ">=",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Filtering objects works by checking their properties."
+},
+{
+  question_id: 443,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.8,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Keep only numbers divisible by 3.",
+  context: `
+const nums = [3, 10, 12, 14]
+  `,
+  template: `
+const result = nums.filter(n => n % 3 ___ 0)
+  `,
+  answer: "===",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Divisible means remainder 0."
+},
+{
+  question_id: 444,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.7,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Filter strings longer than 4 characters.",
+  context: `
+const items = ["pen", "marker", "pad"]
+  `,
+  template: `
+const longOnes = items.filter(i => i.length ___ 4)
+  `,
+  answer: ">",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Length comparisons are common in filtering text."
+},
+{
+  question_id: 445,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.2,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Filter numbers greater than 10.",
+  context: `
+const nums: number[] = [3, 12, 7, 25]
+  `,
+  template: `
+const result = nums.filter((n: number) => ___)
+  `,
+  answer: "n > 10",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Filtering keeps only values that satisfy the condition."
+},
+{
+  question_id: 446,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.1,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Keep only strings with length 3.",
+  context: `
+const words: string[] = ["cat", "bird", "sun"]
+  `,
+  template: `
+const result = words.filter((w: string) => w.length ___ 3)
+  `,
+  answer: "===",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Strict equality checks for exact length."
+},
+{
+  question_id: 447,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.3,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Filter even numbers.",
+  context: `
+const nums: number[] = [2, 5, 8, 11]
+  `,
+  template: `
+const evens = nums.filter((n: number) => n % 2 ___ 0)
+  `,
+  answer: "===",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Even numbers have remainder 0 when divided by 2."
+},
+{
+  question_id: 452,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.8,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Keep only numbers divisible by 3.",
+  context: `
+const nums: number[] = [3, 10, 12, 14]
+  `,
+  template: `
+const result = nums.filter((n: number) => n % 3 ___ 0)
+  `,
+  answer: "===",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Divisible means remainder 0."
+},
+{
+  question_id: 453,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.7,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Filter strings longer than 4 characters.",
+  context: `
+const items: string[] = ["pen", "marker", "pad"]
+  `,
+  template: `
+const longOnes = items.filter((i: string) => i.length ___ 4)
+  `,
+  answer: ">",
+    hint: "What does the prompt need us to filter?",
+
+  explanation: "Length comparisons are common in filtering text."
+}
+]
+
+export const questions3= [
+  {
+  question_id: 500,
+  type: "coding",
+  difficulty: -2,
+  discrimination: 1.1,
+  guess: 0.25,
+  maxAttempts: 3,
+
+  prompt: "Create a list called smallNums that keeps only numbers less than 5.",
+  context: `
+const nums = [1, 9, 4, 12]
+  `,
+
+  answer: `
+const smallNums = nums.filter(n => n < 5)
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Don't forget to declare your list with const!" },
+    { test: missing(".filter"), message: "Use .filter() to keep only certain items." },
+    { test: missing("nums"), message: "Use the original list: nums." },
+    { test: missing("=>"), message: "Arrow function missing!" },
+    { test: missing("<"), message: "We only want numbers less than 5." }
+  ],
+
+  explanation: "Filtering with a simple comparison keeps only the values you want."
+},
+{
+  question_id: 501,
+  type: "coding",
+  difficulty: -1,
+  discrimination: 1.3,
+  guess: 0.22,
+  maxAttempts: 3,
+
+  prompt: "Make a list called shortWords that keeps only words with length 3.",
+  context: `
+const words = ["cat", "bird", "sun", "tree"]
+  `,
+
+  answer: `
+const shortWords = words.filter(w => w.length === 3)
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Declare your new list with const!" },
+    { test: missing(".filter"), message: "Remember to use .filter()!" },
+    { test: missing("words"), message: "Use the original list: words." },
+    { test: missing("w.length"), message: "How do we check the length again?" },
+    { test: missing("==="), message: "We need strict equality here." }
+  ],
+
+  explanation: "Checking w.length lets you filter strings by size."
+},
+{
+  question_id: 502,
+  type: "coding",
+  difficulty: 0,
+  discrimination: 1.5,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Make a list called startsWithA that keeps only words starting with 'a'.",
+  context: `
+const items = ["apple", "pear", "ant", "berry"]
+  `,
+
+  answer: `
+const startsWithA = items.filter(x => x[0] === "a")
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Declare your list with const!" },
+    { test: missing(".filter"), message: "Use .filter() here." },
+    { test: missing("items"), message: "Use the items list." },
+    { test: missing("[0]"), message: "How do we check the first letter?" },
+    { test: missing("==="), message: "Strict equality needed!" }
+  ],
+
+  explanation: "Index 0 gives the first character of each string."
+},
+{
+  question_id: 503,
+  type: "coding",
+  difficulty: 0,
+  discrimination: 1.6,
+  guess: 0.20,
+  maxAttempts: 3,
+
+  prompt: "Create a list called containsE that keeps only words containing 'e'.",
+  context: `
+const words = ["map", "tree", "stone", "cup"]
+  `,
+
+  answer: `
+const containsE = words.filter(w => w.includes("e"))
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Don't forget const!" },
+    { test: missing(".filter"), message: "Use .filter()!" },
+    { test: missing("words"), message: "Use the words list." },
+    { test: missing("includes"), message: "Try using .includes()!" },
+    { test: missing("'e'"), message: "We're checking for the letter e." }
+  ],
+
+  explanation: "The .includes method checks if a substring appears in a string."
+},
+{
+  question_id: 504,
+  type: "coding",
+  difficulty: 1,
+  discrimination: 1.8,
+  guess: 0.18,
+  maxAttempts: 3,
+
+  prompt: "Make a list called divisibleBy3 that keeps only numbers divisible by 3.",
+  context: `
+const nums = [3, 10, 12, 14, 21]
+  `,
+
+  answer: `
+const divisibleBy3 = nums.filter(n => n % 3 === 0)
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Declare your list with const!" },
+    { test: missing(".filter"), message: "Use .filter()!" },
+    { test: missing("nums"), message: "Use the nums list." },
+    { test: missing("%"), message: "Modulo checks divisibility." },
+    { test: missing("==="), message: "Divisible means remainder 0." }
+  ],
+
+  explanation: "n % 3 === 0 means the number is divisible by 3."
+},
+{
+  question_id: 505,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 2.0,
+  guess: 0.15,
+  maxAttempts: 3,
+
+  prompt: "A teacher wants to keep only the students who passed (score >= 70). Create a list called passed.",
+  context: `
+const students = [
+  { name: "Kai", score: 88 },
+  { name: "Mia", score: 65 },
+  { name: "Noah", score: 72 }
+]
+  `,
+
+  answer: `
+const passed = students.filter(s => s.score >= 70)
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Use const to declare passed!" },
+    { test: missing(".filter"), message: "Use .filter() to select passing students." },
+    { test: missing("students"), message: "Use the students list." },
+    { test: missing("s.score"), message: "Check the score property." },
+    { test: missing(">="), message: "Passing means score >= 70." }
+  ],
+
+  explanation: "Filtering objects by a numeric property is a common data‑processing pattern."
+},
+{
+  question_id: 506,
+  type: "coding",
+  difficulty: 2,
+  discrimination: 2.1,
+  guess: 0.15,
+  maxAttempts: 3,
+
+  prompt: "A store wants to keep only items that are in stock (qty > 0). Create a list called available.",
+  context: `
+const inventory = [
+  { name: "pencil", qty: 10 },
+  { name: "pen", qty: 0 },
+  { name: "marker", qty: 4 }
+]
+  `,
+
+  answer: `
+const available = inventory.filter(item => item.qty > 0)
+  `.trim(),
+
+  feedbackChecks: [
+    { test: missing("const"), message: "Declare available with const!" },
+    { test: missing(".filter"), message: "Use .filter() to keep in‑stock items." },
+    { test: missing("inventory"), message: "Use the inventory list." },
+    { test: missing("item.qty"), message: "Check the qty property." },
+    { test: missing(">"), message: "We only want quantities greater than 0." }
+  ],
+
+  explanation: "Filtering objects by a property lets you remove unavailable items."
+}
 
 ]
 
 
 export function getQuestionSet(mode, mastery) {
 
-  // MAP LESSON
   if (mode === "map") {
 
     if (mastery < 85) {
@@ -626,7 +1251,6 @@ export function getQuestionSet(mode, mastery) {
     return questions1;
   }
 
-  // FILTER LESSON
   if (mode === "filter") {
 
     if (mastery < 85) {

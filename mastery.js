@@ -166,6 +166,7 @@ ${rendered}
     container.innerHTML = `
       <p>${q.prompt}</p>
 
+        <p>${q.context || ""}</p>
       <textarea
         id="code-input"
         placeholder="Type your code here..."

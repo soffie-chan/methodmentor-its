@@ -14,17 +14,21 @@
   <p>This is your introduction text. Read this first.</p>
   <button id="start-quiz-btn">Start Quiz</button>
 </div>
-
 <div id="section-quiz" style="display:none;">
   <div id="progress-container">
     <div id="progress-bar"></div>
   </div>
 
   <div id="question-container"></div>
-  <p id="feedback"></p>
+
 
   <button id="submit-btn">Submit</button>
   <button id="next-btn" style="display:none;">Next</button>
+    <p id="feedback"></p>   <!-- stays visible to JS even when quiz is hidden -->
+
+</div>
+
+
 </div>
 
 <div id="section-unlocked" style="display:none;">
@@ -38,6 +42,8 @@
     startTutor();
   });
 </script>
+
+<img id="pablo" src="./assets/pablo.png"></img>
 
 </body>
 </html>

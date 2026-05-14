@@ -1,293 +1,372 @@
 export const questions = [
 
   // -------------------------
-  // LEVEL –2 (very easy)
+  // LEVEL -2
   // -------------------------
   {
-    question_id: 1,
-    type: "coding",
+    question_id: 401,
+    type: "syntax",
     difficulty: -2,
-    prompt: "Fill in the blank to double each number in the list.",
-    starterCode: `const list = [1,3,4,7]
-const newList = _____.map(x => x * 2)`,
-    answer: "list",
-    explanation: "You call .map() on the array itself, so the blank is simply 'list'."
+
+    discrimination: 0.8,
+    guess: 0.35,
+
+    prompt: "Fill in the blank to uppercase each string.",
+
+    context: `
+const fruits = ["apple", "pear", "kiwi"]
+    `,
+
+    template: `
+const uppercased =
+  ___.map((f: string): string => f.toUpperCase())
+    `,
+
+    answer: "fruits",
+    explanation: "You must call .map() on the array itself."
   },
 
   {
-    question_id: 2,
-    type: "coding",
+    question_id: 402,
+    type: "syntax",
     difficulty: -2,
-    prompt: "Use .map() to add 1 to each number.",
-    starterCode: `const list = [1,3,4,7]
-const incremented = _____.map(x => x + 1)`,
-    answer: "list",
-    explanation: "The .map() method must be called on the original array."
+
+    discrimination: 0.8,
+    guess: 0.35,
+
+    prompt: "Fill in the blank to square each number.",
+
+    context: `
+const nums = [2, 4, 6]
+    `,
+
+    template: `
+const squared =
+  ___.map((n: number): number => n * n)
+    `,
+
+    answer: "nums",
+    explanation: "The array name goes before .map()."
   },
 
   {
-    question_id: 3,
-    type: "coding",
+    question_id: 403,
+    type: "syntax",
     difficulty: -2,
-    prompt: "Convert each number to a string.",
-    starterCode: `const list = [1,3,4,7]
-const result = _____.map(x => x.toString())`,
-    answer: "list",
-    explanation: "The blank is the array being transformed."
-  },
 
-  {
-    question_id: 4,
-    type: "coding",
-    difficulty: -2,
-    prompt: "Fill in the blank to triple each number.",
-    starterCode: `const list = [1,3,4,7]
-const tripled = _____.map(x => x * 3)`,
-    answer: "list",
-    explanation: "The .map() call must be applied to the array."
-  },
+    discrimination: 0.8,
+    guess: 0.35,
 
-  {
-    question_id: 5,
-    type: "coding",
-    difficulty: -2,
-    prompt: "Use .map() to negate each number.",
-    starterCode: `const list = [1,3,4,7]
-const neg = _____.map(x => -x)`,
-    answer: "list",
-    explanation: "The blank is the array name."
-  },
+    prompt: "Fill in the blank to get the length of each string.",
 
-  // -------------------------
-  // LEVEL –1 (easy)
-  // -------------------------
-  {
-    question_id: 6,
-    type: "coding",
-    difficulty: -1,
-    prompt: "Fill in the missing parameter type.",
-    starterCode: `const list = [1,3,4,7]
-const doubled = list.map((x: ____): number => x * 2)`,
-    answer: "number",
-    explanation: "The callback parameter x is a number."
-  },
+    context: `
+const words = ["hi", "hello", "hey"]
+    `,
 
-  {
-    question_id: 7,
-    type: "coding",
-    difficulty: -1,
-    prompt: "Fill in the array name and type.",
-    starterCode: `const list = [1,3,4,7]
-const squared = _____.map((n: ____): number => n * n)`,
-    answer: "list,number",
-    explanation: "You call .map() on list, and n is a number."
-  },
+    template: `
+const lengths =
+  ___.map((w: string): number => w.length)
+    `,
 
-  {
-    question_id: 8,
-    type: "coding",
-    difficulty: -1,
-    prompt: "Convert each number to a boolean indicating if it's even.",
-    starterCode: `const list = [1,3,4,7]
-const flags = _____.map((n: ____): boolean => n % 2 === 0)`,
-    answer: "list,number",
-    explanation: "The callback receives a number and returns a boolean."
+    answer: "words",
+    explanation: "You must call .map() on the array."
   },
+{
+  question_id: 404,
+  type: "syntax",
+  difficulty: -2,
+      discrimination: 0.8,
+    guess: 0.35,
 
-  {
-    question_id: 9,
-    type: "coding",
-    difficulty: -1,
-    prompt: "Fill in the missing array name.",
-    starterCode: `const list = [1,3,4,7]
-const halved = _____.map((x: number): number => x / 2)`,
-    answer: "list",
-    explanation: "The .map() call must be applied to the array."
-  },
+  prompt: "Fill in the blank to add 10 to each number.",
+  context: `
+const scores = [5, 12, 20]
+  `,
+  template: `
+const boosted =
+  ___.map((s: number): number => s + 10)
+  `,
+  answer: "scores",
+  explanation: "The array name is required before .map()."
+},
+{
+  question_id: 405,
+  type: "syntax",
+  difficulty: -2,
+      discrimination: 0.8,
+    guess: 0.35,
 
-  {
-    question_id: 10,
-    type: "coding",
-    difficulty: -1,
-    prompt: "Fill in the missing type for the callback parameter.",
-    starterCode: `const list = [1,3,4,7]
-const plusTen = list.map((value: ____): number => value + 10)`,
-    answer: "number",
-    explanation: "The parameter is a number."
-  },
+  prompt: "Fill in the blank to reverse each string.",
+  context: `
+const names = ["sam", "lee", "kai"]
+  `,
+  template: `
+const reversed =
+  ___.map((n: string): string => n.split("").reverse().join(""))
+  `,
+  answer: "names",
+  explanation: "You must call .map() on the array."
+},
+{
+  question_id: 406,
+  type: "syntax",
+  difficulty: -1,
+      discrimination: 1.0,
+    guess: 0.30,
 
-  // -------------------------
-  // LEVEL 0 (medium)
-  // -------------------------
-  {
-    question_id: 11,
-    type: "coding",
-    difficulty: 0,
-    prompt: "Fill in both blanks to double each number.",
-    starterCode: `const list = [1,3,4,7]
-const newList = _____.map((x: ____): number => x * 2)`,
-    answer: "list,number",
-    explanation: "You call .map() on list, and x is typed as number."
-  },
+  prompt: "Fill in the missing type for the iterator variable.",
+  context: `
+const nums = [1, 2, 3]
+  `,
+  template: `
+const doubled =
+  nums.map((x: ___): number => x * 2)
+  `,
+  answer: "number",
+  explanation: "The type annotation for x is required."
+},
+{
+  question_id: 407,
+  type: "syntax",
+  difficulty: -1,
+      discrimination: 1.0,
+    guess: 0.30,
 
-  {
-    question_id: 12,
-    type: "coding",
-    difficulty: 0,
-    prompt: "Use .map() to convert numbers to objects.",
-    starterCode: `const list = [1,3,4,7]
-const objects = _____.map((n: ____): { value: number } => ({ value: n }))`,
-    answer: "list,number",
-    explanation: "The callback receives a number and returns an object."
-  },
+  prompt: "Fill in the missing type for the iterator variable.",
+  context: `
+const pets = ["cat", "dog", "rat"]
+  `,
+  template: `
+const excited =
+  pets.map((p: ___): string => p + "!")
+  `,
+  answer: "string",
+  explanation: "The iterator variable must have a type."
+},
+{
+  question_id: 408,
+  type: "syntax",
+  difficulty: -1,
+  discrimination: 1.0,
+    guess: 0.30,
+  prompt: "Fill in the missing type for the iterator variable.",
+  context: `
+const temps = [70, 72, 68]
+  `,
+  template: `
+const celsius =
+  temps.map((t: ___): number => (t - 32) * 5/9)
+  `,
+  answer: "number",
+  explanation: "The type annotation is missing."
+},
+{
+  question_id: 409,
+  type: "syntax",
+  difficulty: -1,
+  discrimination: 1.0,
+    guess: 0.30,
+  prompt: "Fill in the missing type for the iterator variable.",
+  context: `
+const foods = ["pie", "cake", "taco"]
+  `,
+  template: `
+const lengths =
+  foods.map((f: ___): number => f.length)
+  `,
+  answer: "string",
+  explanation: "The iterator variable must have a type."
+},
+{
+  question_id: 410,
+  type: "syntax",
+  difficulty: -1,
+  discrimination: 1.0,
+    guess: 0.30,
+  prompt: "Fill in the missing type for the iterator variable.",
+  context: `
+const nums = [10, 20, 30]
+  `,
+  template: `
+const halved =
+  nums.map((n: ___): number => n / 2)
+  `,
+  answer: "number",
+  explanation: "The type annotation goes inside the parentheses."
+},
+{
+  question_id: 411,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.5,
+    guess: 0.20,
+  prompt: "Fill in the expression to uppercase each string.",
+  context: `
+const animals = ["cow", "pig", "hen"]
+  `,
+  template: `
+const loud =
+  animals.map((a: string): string => ___)
+  `,
+  answer: "a.toUpperCase()",
+  explanation: "The transformation goes after the arrow."
+},
+{
+  question_id: 412,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.5,
+    guess: 0.20,
+  prompt: "Fill in the expression to get the first letter.",
+  context: `
+const names = ["Lia", "Tom", "Zoe"]
+  `,
+  template: `
+const initials =
+  names.map((n: string): string => ___)
+  `,
+  answer: "n[0]",
+  explanation: "The right side of the arrow is missing."
+},
+{
+  question_id: 413,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.5,
+    guess: 0.20,
+  prompt: "Fill in the expression to cube each number.",
+  context: `
+const nums = [2, 3, 4]
+  `,
+  template: `
+const cubed =
+  nums.map((x: number): number => ___)
+  `,
+  answer: "x * x * x",
+  explanation: "The transformation is missing."
+},
+{
+  question_id: 414,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.5,
+    guess: 0.20,
+  prompt: "Fill in the expression to append '?' to each string.",
+  context: `
+const words = ["why", "how", "what"]
+  `,
+  template: `
+const questioned =
+  words.map((w: string): string => ___)
+  `,
+  answer: "w + '?'",
+  explanation: "The transformation goes after the arrow."
+},
+{
+  question_id: 415,
+  type: "syntax",
+  difficulty: 1,
+  discrimination: 1.5,
+    guess: 0.20,
+  prompt: "Fill in the expression to convert each number to a string.",
+  context: `
+const nums = [1, 2, 3]
+  `,
+  template: `
+const strings =
+  nums.map((n: number): string => ___)
+  `,
+  answer: "String(n)",
+  explanation: "The right-hand side of the arrow is missing."
+},
+{
+  question_id: 416,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.8,
+    guess: 0.15,
+  prompt: "Fill in the transformation to return the last letter of each string.",
+  context: `
+const fruits = ["apple", "pear", "plum"]
+  `,
+  template: `
+const lastLetters =
+  fruits.map((f: string): string => ___)
+  `,
+  answer: "f[f.length - 1]",
+  explanation: "You must compute the last character."
+},
+{
+  question_id: 417,
+  type: "syntax",
+  difficulty: 2,
+  discrimination: 1.8,
+    guess: 0.15,
 
-  {
-    question_id: 13,
-    type: "coding",
-    difficulty: 0,
-    prompt: "Fill in the blanks to multiply each number by its index.",
-    starterCode: `const list = [1,3,4,7]
-const result = _____.map((value: ____, index: ____): number => value * index)`,
-    answer: "list,number,number",
-    explanation: "Both parameters are numbers."
-  },
+  prompt: "Fill in the transformation to return the square root of each number.",
+  context: `
+const nums = [9, 16, 25]
+  `,
+  template: `
+const roots =
+  nums.map((n: number): number => ___)
+  `,
+  answer: "Math.sqrt(n)",
+  explanation: "A more complex transformation is required."
+},
+{
+  question_id: 418,
+  type: "syntax",
+  difficulty: 2,
+    discrimination: 1.8,
+    guess: 0.15,
 
-  {
-    question_id: 14,
-    type: "coding",
-    difficulty: 0,
-    prompt: "Fill in the missing array name and return type.",
-    starterCode: `const list = [1,3,4,7]
-const strings = _____.map((x: number): ____ => x.toString())`,
-    answer: "list,string",
-    explanation: "The callback returns a string."
-  },
+  prompt: "Fill in the transformation to reverse each string.",
+  context: `
+const names = ["sam", "lee", "kai"]
+  `,
+  template: `
+const reversed =
+  names.map((s: string): string => ___)
+  `,
+  answer: "s.split('').reverse().join('')",
+  explanation: "This requires multiple string operations."
+},
+{
+  question_id: 419,
+  type: "syntax",
+  difficulty: 2,
+    discrimination: 1.8,
+    guess: 0.15,
 
-  {
-    question_id: 15,
-    type: "coding",
-    difficulty: 0,
-    prompt: "Fill in the missing callback parameter type.",
-    starterCode: `const list = [1,3,4,7]
-const negatives = list.map((n: ____): number => -n)`,
-    answer: "number",
-    explanation: "The parameter n is a number."
-  },
+  prompt: "Fill in the transformation to return the number of vowels in each string.",
+  context: `
+const words = ["apple", "sky", "orange"]
+  `,
+  template: `
+const vowelCounts =
+  words.map((w: string): number => ___)
+  `,
+  answer: "w.match(/[aeiou]/gi)?.length || 0",
+  explanation: "This uses regex and optional chaining."
+},
+{
+  question_id: 420,
+  type: "syntax",
+  difficulty: 2,
+    discrimination: 1.8,
+    guess: 0.15,
 
-  // -------------------------
-  // LEVEL +1 (hard)
-  // -------------------------
-  {
-    question_id: 16,
-    type: "coding",
-    difficulty: 1,
-    prompt: "Extract the 'name' property from each object.",
-    starterCode: `const users = [{name:"A"},{name:"B"}]
-const names = _____.map((item: ____): string => item.name)`,
-    answer: "users,{name:string}",
-    explanation: "Each item is an object with a name property."
-  },
-
-  {
-    question_id: 17,
-    type: "coding",
-    difficulty: 1,
-    prompt: "Fill in the blanks to map numbers to booleans.",
-    starterCode: `const list = [1,3,4,7]
-const flags = _____.map((n: ____): boolean => n > 3)`,
-    answer: "list,number",
-    explanation: "The callback receives a number and returns a boolean."
-  },
-
-  {
-    question_id: 18,
-    type: "coding",
-    difficulty: 1,
-    prompt: "Fill in the blanks to return objects with doubled values.",
-    starterCode: `const list = [1,3,4,7]
-const doubled = _____.map((x: ____): { doubled: number } => ({ doubled: x * 2 }))`,
-    answer: "list,number",
-    explanation: "The callback receives a number and returns an object."
-  },
-
-  {
-    question_id: 19,
-    type: "coding",
-    difficulty: 1,
-    prompt: "Fill in the missing array name and type.",
-    starterCode: `const list = [1,3,4,7]
-const indexed = _____.map((value: ____, index: number): string => value + ":" + index)`,
-    answer: "list,number",
-    explanation: "The first parameter is a number."
-  },
-
-  {
-    question_id: 20,
-    type: "coding",
-    difficulty: 1,
-    prompt: "Fill in the missing return type.",
-    starterCode: `const list = [1,3,4,7]
-const bools = list.map((n: number): ____ => n % 2 === 1)`,
-    answer: "boolean",
-    explanation: "The callback returns a boolean."
-  },
-
-  // -------------------------
-  // LEVEL +2 (very hard)
-  // -------------------------
-  {
-    question_id: 21,
-    type: "coding",
-    difficulty: 2,
-    prompt: "Map objects to a computed property.",
-    starterCode: `const users = [{name:"A",age:20},{name:"B",age:30}]
-const ages = _____.map((u: ____): number => u.age * 2)`,
-    answer: "users,{name:string,age:number}",
-    explanation: "Each user object has name and age."
-  },
-
-  {
-    question_id: 22,
-    type: "coding",
-    difficulty: 2,
-    prompt: "Fill in all blanks for a typed callback with index.",
-    starterCode: `const list = [1,3,4,7]
-const result = _____.map((value: ____, index: ____): number => value + index * 10)`,
-    answer: "list,number,number",
-    explanation: "Both parameters are numbers."
-  },
-
-  {
-    question_id: 23,
-    type: "coding",
-    difficulty: 2,
-    prompt: "Map numbers to objects with typed keys.",
-    starterCode: `const list = [1,3,4,7]
-const objs = _____.map((n: ____): { original: number, doubled: number } => ({ original: n, doubled: n * 2 }))`,
-    answer: "list,number",
-    explanation: "The callback receives a number and returns a typed object."
-  },
-
-  {
-    question_id: 24,
-    type: "coding",
-    difficulty: 2,
-    prompt: "Fill in the missing array name and return type.",
-    starterCode: `const list = [1,3,4,7]
-const strings = _____.map((x: number): ____ => \`Value: \${x}\`)`,
-    answer: "list,string",
-    explanation: "The callback returns a string."
-  },
-
-  {
-    question_id: 25,
-    type: "coding",
-    difficulty: 2,
-    prompt: "Fill in the missing type for a complex callback.",
-    starterCode: `const list = [1,3,4,7]
-const complex = list.map((n: ____): { n: number, isBig: boolean } => ({ n, isBig: n > 5 }))`,
-    answer: "number",
-    explanation: "The callback parameter n is a number."
-  }
+  prompt: "Fill in the transformation to return the number doubled and then minus 3.",
+  context: `
+const nums = [5, 10, 15]
+  `,
+  template: `
+const transformed =
+  nums.map((n: number): number => ___)
+  `,
+  answer: "(n * 2) - 3",
+  explanation: "A multi‑step numeric transformation."
+}
 
 ];

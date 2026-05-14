@@ -1,12 +1,17 @@
 html {
-  background-color: rgb(95, 138, 160);
+  background-color: rgb(109, 186, 225);
+  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
 }
 
     body {
-      font-family: sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
       padding: 20px;
       max-width: 600px;
+      text-align: center;
       margin: auto;
+    }
+    #question-container{
+      font-size: 20px;
     }
 
     #progress-container {
@@ -27,8 +32,13 @@ html {
 
     #feedback {
       font-weight: bold;
-      margin: 10px 0;
-      min-height: 20px;
+      background-color: white;
+      border: 5px solid black;
+      padding: 20px;
+      max-width:260px;
+      margin-top: 100px ;
+      margin-left: 220px; 
+
     }
 
     button {
@@ -48,3 +58,21 @@ html {
     margin-top: 10px;
   }
 
+#pablo {
+  height: 570px;
+  position: fixed;
+  bottom: 0px;
+  right: 300px;
+  z-index: -9999;
+}
+
+.blank {
+
+  width: 180px;
+
+  font-family: monospace;
+
+  font-size: 16px;
+
+  padding: 4px;
+}

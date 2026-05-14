@@ -1,5 +1,8 @@
-import { pickNextQuestion, getTheta, renderQuestion,processAnswer} from "./mastery.js";
+import { pickNextQuestion, thetaToMastery, getTheta, renderQuestion,processAnswer,updateProgressBar} from "./mastery.js";
 import { questions } from "./questions.js";
+import {
+  submitAnswer
+} from "./mastery.js";
 
 export function startTutor() {
   const intro = document.getElementById("section-intro");
@@ -18,58 +21,66 @@ export function startTutor() {
   // Start quiz
   // ------------------------------
   startQuizBtn.onclick = () => {
+        loadNextQuestion();
+
     intro.style.display = "none";
     quiz.style.display = "block";
-    loadNextQuestion();
+      updateProgressBar(thetaToMastery(getTheta())); 
   };
 
   // ------------------------------
   // Load next adaptive question
   // ------------------------------
-  function loadNextQuestion() {
-    currentQuestion = pickNextQuestion(getTheta(), questions);
-    renderQuestion(currentQuestion);
+ function loadNextQuestion() {
 
-    feedback.textContent = "";
-    nextBtn.style.display = "none";
-    submitBtn.style.display = "inline-block";
-  }
+  currentQuestion =
+    pickNextQuestion(getTheta(), questions);
+
+  renderQuestion(currentQuestion);
+
+  const mastery =
+    thetaToMastery(getTheta());
+
+  updateProgressBar(mastery);
+
+  feedback.textContent = "Coo.";
+  nextBtn.style.display = "none";
+  submitBtn.style.display = "inline-block";
+}
+nextBtn.onclick = () => {
+    loadNextQuestion();
+  };
+
+
 
   // ------------------------------
   // Submit coding answer
   // ------------------------------
-  submitBtn.onclick = () => {
-    const input = document.getElementById("code-input");
+submitBtn.onclick = () => {
+  const input =
+    document.getElementById("code-input") ||
+    document.getElementById("blank-input");
 
-    if (!input || !input.value.trim()) {
-      feedback.textContent = "Type your answer first.";
-      feedback.style.color = "orange";
-      return;
-    }
+  if (!input || !input.value.trim()) return;
 
-    const normalize = str => str.replace(/\s+/g, "").toLowerCase();
-    const userAnswer = input.value.trim();
-    const isCorrect = normalize(userAnswer) === normalize(currentQuestion.answer);
+  const userAnswer = input.value.trim();
 
-    processAnswer(currentQuestion, isCorrect);
+  const normalize = str =>
+    str.replace(/\s+/g, "").toLowerCase();
 
-    feedback.innerHTML = isCorrect
-      ? `Correct!<br>${currentQuestion.explanation}`
-      : `Incorrect.<br>${currentQuestion.explanation}`;
+  const isCorrect =
+    normalize(userAnswer) ===
+    normalize(currentQuestion.answer);
 
-    feedback.style.color = isCorrect ? "green" : "red";
+  processAnswer(currentQuestion, isCorrect);
 
-    submitBtn.style.display = "none";
-    nextBtn.style.display = "inline-block";
-  };
+  feedback.innerHTML = isCorrect
+    ? `Correct!<br>${currentQuestion.explanation}`
+    : `Incorrect.<br>${currentQuestion.explanation}`;
 
-  nextBtn.onclick = () => loadNextQuestion();
+  feedback.style.color = isCorrect ? "green" : "red";
 
-  // ------------------------------
-  // LEVEL UP → unlock new HTML
-  // ------------------------------
-  document.addEventListener("levelUp", () => {
-    quiz.style.display = "none";
-    unlocked.style.display = "block";
-  });
+  nextBtn.style.display = "inline-block";
+  submitBtn.style.display = "none";
+};
 }

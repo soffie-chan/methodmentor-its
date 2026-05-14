@@ -42,6 +42,8 @@ export function thetaToMastery(theta) {
 // ------------------------------
 export function updateProgressBar(mastery) {
   const bar = document.getElementById("progress-bar");
+
+console.log("mastery =", mastery);
   if (!bar) return;
 
   bar.style.width = mastery + "%";
@@ -99,44 +101,137 @@ export function pickNextQuestion(theta, questions) {
 // Render coding question
 // ------------------------------
 export function renderQuestion(q) {
-  const container = document.getElementById("question-container");
+
+  const container =
+    document.getElementById(
+      "question-container"
+    );
+
   if (!container) return;
 
+  // Syntax fill-in-the-blank
+if (q.type === "syntax") {
+
+  const rendered =
+    (q.template || "").replace(
+
+      "___",
+
+      `<input
+        id="blank-input"
+        class="blank"
+        type="text"
+      >`
+    );
+
   container.innerHTML = `
+
     <p>${q.prompt}</p>
 
-    <textarea id="code-input" placeholder="Type your code here..."></textarea>
+    <pre class="context">
+${q.context || ""}
+    </pre>
 
-    <pre class="starter">${q.starterCode || ""}</pre>
+    <pre class="template">
+${rendered}
+    </pre>
   `;
+}  // Coding questions
+  else if (q.type === "coding") {
+
+    container.innerHTML = `
+      <p>${q.prompt}</p>
+
+      <textarea
+        id="code-input"
+        placeholder="Type your code here..."
+      ></textarea>
+
+      <pre>
+${q.starterCode || ""}
+      </pre>
+    `;
+  }
 }
 
 
 export function submitAnswer(currentQuestion) {
-  const input = document.getElementById("code-input");
-  const feedback = document.getElementById("feedback");
 
-  if (!input) return;
+  const feedback =
+    document.getElementById(
+      "feedback"
+    );
 
-  const userCode = input.value.trim();
+  let userCode = "";
+
+  // Syntax questions
+  if (
+    currentQuestion.type ===
+    "syntax"
+  ) {
+
+    const input =
+      document.getElementById(
+        "blank-input"
+      );
+
+    if (!input) return;
+
+    userCode =
+      input.value.trim();
+  }
+
+  // Coding questions
+  else if (
+    currentQuestion.type ===
+    "coding"
+  ) {
+
+    const input =
+      document.getElementById(
+        "code-input"
+      );
+
+    if (!input) return;
+
+    userCode =
+      input.value.trim();
+  }
 
   if (!userCode) {
-    feedback.textContent = "Type your answer first.";
-    feedback.style.color = "orange";
+
+    feedback.textContent =
+      "Type your answer first.";
+
     return;
   }
 
   const normalize = str =>
-    str.replace(/\s+/g, "").toLowerCase();
+    str
+      .replace(/\s+/g, "")
+      .toLowerCase();
 
   const isCorrect =
-    normalize(userCode) === normalize(currentQuestion.answer);
+    normalize(userCode) ===
+    normalize(
+      currentQuestion.answer
+    );
 
-  processAnswer(currentQuestion, isCorrect);
+  processAnswer(
+    currentQuestion,
+    isCorrect
+  );
 
-  feedback.innerHTML = isCorrect
-    ? "Correct!<br>" + currentQuestion.explanation
-    : "Incorrect.<br>" + currentQuestion.explanation;
+  feedback.innerHTML =
+    isCorrect
+      ? "Correct!<br>" +
+        (currentQuestion.explanation || "")
 
-  feedback.style.color = isCorrect ? "green" : "red";
+      : "Incorrect.<br>" +
+        (currentQuestion.explanation || "");
+
+  feedback.style.color =
+    isCorrect
+      ? "green"
+      : "red";
 }

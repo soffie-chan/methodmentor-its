@@ -3,6 +3,11 @@
 // ------------------------------
 export let difficulty2Correct = 0;
 
+export function __setTheta(value) {
+  theta = value;
+}
+//restore internal state.
+
 export function updateTheta(theta, question, isCorrect, k = 0.2) {
   const a = question.discrimination;
   const b = question.difficulty;
@@ -51,6 +56,18 @@ console.log("mastery =", mastery);
   if (mastery < 40) bar.style.background = "#e57373";
   else if (mastery < 70) bar.style.background = "#ffb74d";
   else bar.style.background = "#81c784";
+  if (mastery < 15) {
+    const feedback = document.getElementById("feedback");
+    const pablo = document.getElementById("pablo")
+    if (feedback) {
+      feedback.innerHTML = 
+        "Would you like to read the textbook again? <u>Click me, the pigeon!</u>";
+      feedback.style.color = "#006b9d";
+    }
+    pablo.onclick = () => {
+      location.reload();
+    };
+  }
 }
 
 // ------------------------------
@@ -58,6 +75,10 @@ console.log("mastery =", mastery);
 // ------------------------------
 export function processAnswer(question, isCorrect) {
   theta = updateTheta(theta, question, isCorrect);
+  localStorage.setItem("tutorProgress", JSON.stringify({
+  theta,
+  difficulty2Correct
+  }));
   const mastery = thetaToMastery(theta);
 
   // Track difficulty 2 correct answers

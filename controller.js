@@ -5,6 +5,21 @@ import {
 } from "./mastery.js";
 
 export function startTutor() {
+  const saved = JSON.parse(localStorage.getItem("tutorProgress") || "{}");
+
+if (saved.theta !== undefined) {
+  import("./mastery.js").then(mod => {
+    mod.__setTheta(saved.theta); 
+    mod.difficulty2Correct = saved.difficulty2Correct || 0;
+
+    updateProgressBar(thetaToMastery(getTheta()));
+  });
+} else {
+  updateProgressBar(thetaToMastery(getTheta()));
+}
+
+
+updateProgressBar(thetaToMastery(getTheta()));
   const intro = document.getElementById("section-intro");
   const quiz = document.getElementById("section-quiz");
 
@@ -39,6 +54,7 @@ export function startTutor() {
 submitBtn.onclick = () => {
   if (!currentQuestion) return;
 
+  updateProgressBar(thetaToMastery(getTheta()));
   submitAnswer(currentQuestion);
 
   const input =
@@ -46,6 +62,10 @@ submitBtn.onclick = () => {
     document.getElementById("code-input");
 
   if (!input) return;
+  if (!input.value.trim()) {
+  feedback.textContent = "Please enter a value! I mean... coo.";
+  return;
+}
 
   const userAnswer = input.value.trim();
   const normalize = s => s.replace(/\s+/g, "").toLowerCase();

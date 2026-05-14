@@ -64,8 +64,16 @@ function loadTextbook(mode) {
 
   if (mode === "filter") {
     textbook.innerHTML = `
-      <p>.filter() keeps only items that pass a condition...</p>
-      <p>Example: nums.filter(x => x > 5)</p>
+      <div id="textbookmap">
+    <p>.filter() lets you go through every element in a list and pick/choose the items you want to keep based on a condition</p>
+    <p>Therefore, its inner in-line function will ALWAYS return a boolean!</p>
+    <p>If you wanted to find every animal in a list Animals that began with the letter S...</p>
+    <p style="font-size: 20px; color: blueviolet;">const SLetterAnimals = Animals.map((animal:string):boolean => animal[0]==="S")</p>
+    <p>Here, <u>const SLetterAnimals</u> is the list you want to store everything in. <u>animal</u> is the parameter and animal:string means that the type of animal is a string.</p>
+    <p>(animal:string):boolean is basically saying that the output we expect should also be a boolean. The => operator says, "Everything after me is a part of the function." So it's like {} as you know it.</p>
+    <p>Lastly, the command! This will always be a command that returns TRUE or FALSE. In this case, it checks if every animal's first letter is S.</p>
+    <p>Why not try it yourself?</p>
+  </div>
     `;
   }
 }

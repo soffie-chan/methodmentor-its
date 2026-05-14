@@ -61,17 +61,13 @@ console.log("mastery =", mastery);
   if (mastery < 40) bar.style.background = "#e57373";
   else if (mastery < 70) bar.style.background = "#ffb74d";
   else bar.style.background = "#81c784";
-  if (mastery < 15) {
+  if (mastery < 20) {
     const feedback = document.getElementById("feedback");
-    const pablo = document.getElementById("pablo")
     if (feedback) {
       feedback.innerHTML = 
         "Would you like to read the textbook again? <u>Click me, the pigeon!</u>";
       feedback.style.color = "#006b9d";
     }
-    pablo.onclick = () => {
-      location.reload();
-    };
   }
 }
 

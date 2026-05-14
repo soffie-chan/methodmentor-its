@@ -13,6 +13,16 @@ const intro = document.getElementById("section-intro");
 
 const mapBtn = document.getElementById("select-map");
 const filterBtn = document.getElementById("select-filter");
+const pablo = document.getElementById("pablo");
+
+if (pablo) {
+  pablo.onclick = () => {
+
+    localStorage.removeItem("tutorProgress");
+
+    location.reload();
+  };
+}
 
 mapBtn.onclick = () => {
   selectedMode = "map";
@@ -156,6 +166,16 @@ submitBtn.onclick = () => {
   }
 
   attemptCount++;
+  if (!isCorrect && currentQuestion.feedbackChecks) {
+
+  for (const check of currentQuestion.feedbackChecks) {
+
+    if (check.test(userCode)) {
+      feedback.textContent = check.message;
+      return;
+    }
+  }
+}
 
   feedback.textContent = currentQuestion.hint || "Try again.";
 
